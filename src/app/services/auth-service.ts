@@ -1,26 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFire, FirebaseAuthState,
-         FirebaseListObservable,
-         AuthMethods, AuthProviders } from 'angularfire2';
+import { User } from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class AuthService {
-    private authState$: Observable<FirebaseAuthState> = null;
+    private authState$: Observable<User> = null;
 
-    constructor(public af: AngularFire) {
-        this.authState$ = af.auth;
+    constructor(public afAuth: AngularFireAuth) {
+        this.authState$ = afAuth.authState;
     }
 
     login(userName: string, password: string) {
-        this.af.auth.login({
-            email: userName,
-            password: password
-        },
-        {
-          provider: AuthProviders.Password,
-          method: AuthMethods.Password
-        });
+        this.afAuth.auth.signInWithEmailAndPassword(userName, password);
 
         return this.authState$;
     }

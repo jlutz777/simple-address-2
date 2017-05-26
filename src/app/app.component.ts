@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import { AuthService } from './services/auth-service';
 
@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
     title = 'app works!';
     items: FirebaseListObservable<any[]>;
 
-    constructor(private af: AngularFire, private auth: AuthService) {
+    constructor(private db: AngularFireDatabase, private auth: AuthService) {
     }
 
     ngOnInit() {
         this.auth.login('EMAIL', 'PASSWORD').subscribe(latest => {
-            this.items = this.af.database.list('users/' + latest.uid + '/addresses');
+            this.items = this.db.list('users/' + latest.uid + '/addresses');
         });
     }
 }

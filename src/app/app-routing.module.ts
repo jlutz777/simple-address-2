@@ -1,11 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { FindComponent } from './find/find.component';
+import { AuthGuard } from './guards/auth-guard';
+import { LoginComponent } from './login/login.component';
+import { AppComponent } from './app.component';
+
 const routes: Routes = [
-    // {
-    //     path: 'login',
-    //     loadChildren: './login/login.module#LoginModule'
-    // }
+    {
+       path: '',
+       component: FindComponent,
+       canActivate: [ AuthGuard ]
+    },
+    {
+       path: 'login',
+       component: LoginComponent
+    },
+    {
+        path: 'find',
+        component: FindComponent,
+        canActivate: [ AuthGuard ]
+    }
 ];
 
 @NgModule({

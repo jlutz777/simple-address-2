@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxFlexOffset="10px" fxLayoutGap="20px">
+    <div fxFlex="0 0 50px" fxLayout="column" class="search">
+        <md-input-container fxFlexFill>
+            <md-icon mdPrefix>search</md-icon>
+            <md-placeholder>&nbsp;&nbsp;Contact name</md-placeholder>
+            <input mdInput (keyup)="filter($event.target.value)" />
+        </md-input-container>
+    </div>
+    <div fxFlex="1 1 auto" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign=" center">
+    <div *ngIf="(items | async).length === 0">
+        <h4>(None Found)</h4>
+    </div>
+    <md-card fxLayout="column" fxFlex="0 0 auto" *ngFor="let item of items | async" class="app-card">
+        <md-card-content fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="app-card-content" (click)="viewApp(app.id)">
+        <span fxFlex="0 0 auto" class="app-name">{{item.first_name}} {{item.last_name}}</span>
+        </md-card-content>
+    </md-card>
+    </div>
+</div>

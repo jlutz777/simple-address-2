@@ -1,7 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MdCardModule, MdIconModule, MdInputModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -9,6 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
+import { FindComponent } from './find/find.component';
 
 // Initialize Firebase
 export const firebaseConfig = {
@@ -22,17 +26,24 @@ export const firebaseConfig = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        FindComponent
     ],
     imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        AppRoutingModule,
-        LoginModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        FormsModule,
+        HttpModule,
+        MdCardModule,
+        MdIconModule,
+        MdInputModule,
+        AppRoutingModule,
+        LoginModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

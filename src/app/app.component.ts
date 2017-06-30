@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-
-import { AuthService } from './services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -9,15 +7,12 @@ import { AuthService } from './services/auth-service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'app works!';
-    items: FirebaseListObservable<any[]>;
+    title = 'Simple Address';
 
-    constructor(private db: AngularFireDatabase, private auth: AuthService) {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
-        this.auth.login('EMAIL', 'PASSWORD').subscribe(latest => {
-            this.items = this.db.list('users/' + latest.uid + '/addresses');
-        });
+        this.router.navigate(['/find']);
     }
 }

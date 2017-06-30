@@ -1,9 +1,10 @@
 <h1>
   {{title}}
 </h1>
-<ul>
-    <li class="text" *ngFor="let item of items | async">
-        {{item.first_name}} {{item.last_name}}
-    </li>
-</ul>
+<nav>
+    <a routerLink="/find" routerLinkActive="active">Find</a>
+    <a routerLink="/create" routerLinkActive="active">Create</a>
+    <a routerLink="/export" routerLinkActive="active">Export</a>
+    <a routerLink="/logout" routerLinkActive="active">Logout</a>
+</nav>
 <router-outlet></router-outlet>

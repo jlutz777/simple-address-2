@@ -16,7 +16,6 @@ import { AuthService } from '../services/auth-service';
         AuthService
     ],
     declarations: [
-        LoginComponent
     ]
 })
 export class LoginModule { }

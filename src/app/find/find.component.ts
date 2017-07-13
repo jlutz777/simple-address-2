@@ -10,7 +10,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Component({
   selector: 'app-find',
   templateUrl: './find.component.html',
-  styleUrls: ['./find.component.css']
+  styleUrls: ['./find.component.scss']
 })
 export class FindComponent implements OnInit {
     private filterVal: BehaviorSubject<string>;

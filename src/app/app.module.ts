@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { FindComponent } from './find/find.component';
+import { AddressCardComponent } from './address-card/address-card.component';
 
 // Initialize Firebase
 export const firebaseConfig = {
@@ -27,7 +28,8 @@ export const firebaseConfig = {
 @NgModule({
     declarations: [
         AppComponent,
-        FindComponent
+        FindComponent,
+        AddressCardComponent
     ],
     imports: [
         AngularFireModule.initializeApp(firebaseConfig),

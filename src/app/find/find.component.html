@@ -7,13 +7,12 @@
         </md-input-container>
     </div>
     <div fxFlex="1 1 auto" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign=" center">
-    <div *ngIf="(items | async).length === 0">
-        <h4>(None Found)</h4>
-    </div>
-    <md-card fxLayout="column" fxFlex="0 0 auto" *ngFor="let item of items | async" class="app-card">
-        <md-card-content fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="app-card-content" (click)="viewApp(app.id)">
-        <span fxFlex="0 0 auto" class="app-name">{{item.first_name}} {{item.last_name}}</span>
-        </md-card-content>
-    </md-card>
+        <div *ngIf="(items | async).length === 0">
+            <h4>(None Found)</h4>
+        </div>
+        <div fxFlex="0 0 auto" fxLayout="column" *ngFor="let item of items | async" class="address-card">
+            <app-address-card fxFlexFill fxLayout="column" [address]="item">
+            </app-address-card>
+        </div>
     </div>
 </div>
